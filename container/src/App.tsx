@@ -69,10 +69,40 @@ const Layout = () => {
 
   // Callback to sync remote history changes with container browser history
   const handleHistoryChange = useCallback(
-    (path: string, microfrontend: string) => {
-      // Update the browser history to reflect the microfrontend's route
-      const fullPath = `/${microfrontend}${path}`;
-      navigate(fullPath, { replace: false });
+    (path: string, sourceMicrofrontend?: string) => {
+      console.log("🏠 Container - Received history change:", {
+        path,
+        sourceMicrofrontend,
+      });
+
+      // Check if path already contains microfrontend prefix (cross-mf navigation)
+      if (path.startsWith("/dashboard") || path.startsWith("/cart")) {
+        console.log(
+          "🏠 Container - Cross-MF navigation detected, navigating to:",
+          path
+        );
+        // Path already contains the target microfrontend, use as-is
+        navigate(path, { replace: false });
+
+        // Dispatch custom event to notify target microfrontend of route change
+        if (path.startsWith("/dashboard")) {
+          console.log(
+            "🏠 Container - Dispatching dashboard-route-change event"
+          );
+          window.dispatchEvent(new CustomEvent("dashboard-route-change"));
+        } else if (path.startsWith("/cart")) {
+          console.log("🏠 Container - Dispatching cart-route-change event");
+          window.dispatchEvent(new CustomEvent("cart-route-change"));
+        }
+      } else {
+        // Internal navigation within same microfrontend
+        const fullPath = `/${sourceMicrofrontend}${path}`;
+        console.log(
+          "🏠 Container - Internal navigation detected, navigating to:",
+          fullPath
+        );
+        navigate(fullPath, { replace: false });
+      }
     },
     [navigate]
   );

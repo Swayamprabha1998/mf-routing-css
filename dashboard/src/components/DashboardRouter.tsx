@@ -2,6 +2,7 @@ import { Routes, Route, Link, Router } from "react-router-dom";
 import ProductsList from "./ProductsList";
 import { useEffect, useState } from "react";
 import type { MemoryHistory, Update } from "history";
+import { navigateToMicrofrontend } from "../utils/navigation";
 
 interface DashboardRouterProps {
   history?: MemoryHistory;
@@ -213,9 +214,17 @@ const DashboardRouter = ({
 
     // Listen to history changes and update location state
     const unlisten = history.listen((update: Update) => {
+      console.log(
+        "📍 Dashboard Router - Memory history changed to:",
+        update.location.pathname
+      );
       setLocation(update.location);
       // Call the callback to sync with container history
       if (onHistoryChange) {
+        console.log(
+          "📍 Dashboard Router - Notifying container of path:",
+          update.location.pathname
+        );
         onHistoryChange(update.location.pathname);
       }
     });
@@ -223,10 +232,96 @@ const DashboardRouter = ({
     return unlisten; // Clean up the listener on unmount
   }, [history, onHistoryChange]);
 
+  // Component for demonstrating cross-microfrontend navigation
+  const CrossNavDemo = () => (
+    <div
+      style={{
+        marginBottom: "20px",
+        padding: "15px",
+        background: "#f8f9fa",
+        border: "1px solid #dee2e6",
+        borderRadius: "8px",
+      }}
+    >
+      <h3>Navigation Demos</h3>
+
+      {/* Cross-microfrontend navigation */}
+      <div style={{ marginBottom: "10px" }}>
+        <p>Cross-microfrontend navigation:</p>
+        <button
+          onClick={() =>
+            navigateToMicrofrontend("/cart", "cross", onHistoryChange, history)
+          }
+          style={{
+            padding: "10px 20px",
+            background: "#28a745",
+            color: "white",
+            border: "none",
+            borderRadius: "4px",
+            cursor: "pointer",
+            marginRight: "10px",
+          }}
+        >
+          Go to Cart (Cross-MF)
+        </button>
+      </div>
+
+      {/* Internal navigation demo */}
+      <div>
+        <p>Internal navigation:</p>
+        <button
+          onClick={() =>
+            navigateToMicrofrontend(
+              "/analytics",
+              "internal",
+              onHistoryChange,
+              history
+            )
+          }
+          style={{
+            padding: "10px 20px",
+            background: "#007bff",
+            color: "white",
+            border: "none",
+            borderRadius: "4px",
+            cursor: "pointer",
+            marginRight: "10px",
+          }}
+        >
+          Go to Analytics (Internal)
+        </button>
+        <button
+          onClick={() =>
+            navigateToMicrofrontend(
+              "/products",
+              "internal",
+              onHistoryChange,
+              history
+            )
+          }
+          style={{
+            padding: "10px 20px",
+            background: "#6f42c1",
+            color: "white",
+            border: "none",
+            borderRadius: "4px",
+            cursor: "pointer",
+          }}
+        >
+          Go to Products (Internal)
+        </button>
+      </div>
+    </div>
+  );
+
   // Render content
   const dashboardContent = (
     <div>
       <h1>Dashboard</h1>
+
+      {/* Only show cross-nav demo when embedded */}
+      {history && onHistoryChange && <CrossNavDemo />}
+
       <DashboardNav />
 
       <Routes>

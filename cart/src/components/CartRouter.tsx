@@ -3,6 +3,7 @@ import { useSelector } from "react-redux";
 import { selectCartCount } from "../store";
 import { useEffect, useState } from "react";
 import type { MemoryHistory, Update } from "history";
+import { navigateToMicrofrontend } from "../utils/navigation";
 
 interface CartRouterProps {
   history?: MemoryHistory;
@@ -266,10 +267,50 @@ const CartRouter = ({ history, onHistoryChange }: CartRouterProps) => {
     return unlisten; // Clean up the listener on unmount
   }, [history, onHistoryChange]);
 
+  // Component for demonstrating cross-microfrontend navigation
+  const CrossNavDemo = () => (
+    <div
+      style={{
+        marginBottom: "20px",
+        padding: "15px",
+        background: "#f8f9fa",
+        border: "1px solid #dee2e6",
+        borderRadius: "8px",
+      }}
+    >
+      <h3>Cross-Microfrontend Navigation Demo</h3>
+      <p>Click the button below to navigate from Cart to Dashboard:</p>
+      <button
+        onClick={() =>
+          navigateToMicrofrontend(
+            "/dashboard/analytics",
+            "cross",
+            onHistoryChange,
+            history
+          )
+        }
+        style={{
+          padding: "10px 20px",
+          background: "#007bff",
+          color: "white",
+          border: "none",
+          borderRadius: "4px",
+          cursor: "pointer",
+        }}
+      >
+        Go to Dashboard Analytics (Cross-MF Navigation)
+      </button>
+    </div>
+  );
+
   // Render content
   const cartContent = (
     <div>
       <h1>Shopping</h1>
+
+      {/* Only show cross-nav demo when embedded */}
+      {history && onHistoryChange && <CrossNavDemo />}
+
       <CartNav />
       <Routes>
         <Route path="/" element={<CartItems />} />
