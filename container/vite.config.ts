@@ -16,7 +16,13 @@ export default defineConfig({
       exposes: {
         "./context/TokenContext": "./src/context/TokenContext.tsx",
       },
-      shared: ["react", "react-dom", "react-redux", "@reduxjs/toolkit"],
+      shared: [
+        "react",
+        "react-dom",
+        "react-redux",
+        "@reduxjs/toolkit",
+        "react-router-dom",
+      ],
     }),
   ],
   server: {

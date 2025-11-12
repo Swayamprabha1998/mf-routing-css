@@ -9,8 +9,16 @@ export default defineConfig({
     federation({
       name: "dashboard",
       filename: "remoteEntry.js",
-      exposes: { "./App": "./src/App.tsx" },
-      shared: ["react", "react-dom", "react-redux", "@reduxjs/toolkit"],
+      exposes: {
+        "./AppRoutesAsChild": "./src/AppRoutesAsChild.tsx",
+      },
+      shared: [
+        "react",
+        "react-dom",
+        "react-redux",
+        "@reduxjs/toolkit",
+        "react-router-dom",
+      ],
       remotes: {
         ui: "http://localhost:5003/assets/remoteEntry.js",
         container: "http://localhost:5000/assets/remoteEntry.js",
