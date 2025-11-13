@@ -11,10 +11,15 @@
     "serve": "npm run build && npm run preview"
   },
   "dependencies": {
+    "@ant-design/icons": "^6.1.0",
     "@module-federation/vite": "^1.9.0",
     "@originjs/vite-plugin-federation": "^1.4.1",
+    "ag-grid-community": "^34.3.1",
+    "ag-grid-react": "^34.3.1",
+    "antd": "^5.28.1",
     "react": "^18.3.1",
-    "react-dom": "^18.3.1"
+    "react-dom": "^18.3.1",
+    "sass": "^1.94.0"
   },
   "devDependencies": {
     "@eslint/js": "^9.36.0",
