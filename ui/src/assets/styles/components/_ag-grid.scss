@@ -1,0 +1,79 @@
+// ag grid table css
+.ag-root {
+  & .ag-cell {
+    & .ant-form-item .ant-form-item-control-input {
+      min-height: 25px;
+    }
+    & .ant-select {
+      height: 25px;
+      & span {
+        font-size: 12px;
+      }
+      &-selector {
+        border: 0;
+        padding: 0 17px;
+      }
+      &-outlined:not(.ant-select-disabled):not(.ant-select-customize-input):not(
+          .ant-pagination-size-changer
+        ):hover
+        .ant-select-selector {
+        border: 0;
+      }
+    }
+
+    & .ant-picker {
+      width: 100%;
+      border: 0;
+      padding: 2px 17px 2px;
+      & .ant-picker-input > input {
+        font-size: 12px;
+      }
+    }
+    & .ant-input {
+      width: 100%;
+      border: 0;
+      padding: 2px 0;
+      &:focus-within {
+        box-shadow: none;
+      }
+    }
+  }
+}
+
+.ag-select-cell {
+  &.ant-select-dropdown .ant-select-item {
+    font-size: 12px !important;
+    min-height: 28px;
+  }
+}
+.ag-datepicker-cell {
+  &.ant-picker-dropdown {
+    font-size: 12px;
+    & .ant-picker-cell {
+      padding: 4px 0;
+      & .ant-picker-cell-inner {
+        min-width: 20px;
+        height: 20px;
+        line-height: 20px;
+      }
+    }
+    & .ant-picker-header {
+      &-view,
+      & button {
+        line-height: 30px;
+      }
+    }
+  }
+}
+.ag-theme-alpine,
+.ag-theme-alpine-dark {
+  & .ag-side-button.ag-selected {
+    color: var(--primary) !important;
+    & .ag-icon {
+      color: var(--primary) !important;
+    }
+  }
+}
+.disabled-cell {
+  opacity: 0.5;
+}

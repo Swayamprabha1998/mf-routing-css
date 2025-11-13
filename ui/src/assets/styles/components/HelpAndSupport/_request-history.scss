@@ -1,0 +1,41 @@
+.request-history {
+  height: 100%;
+  & .tickets-card {
+    & h1 {
+      font-size: 14px;
+      font-weight: 600;
+      line-height: 22px;
+      color: var(--black);
+    }
+  }
+  &-select {
+    min-width: 230px;
+  }
+  &-middle-scroll {
+    height: calc(100vh - 260px);
+    overflow: auto;
+  }
+  &-pagination {
+    .ant-pagination {
+      display: flex;
+      justify-content: flex-end;
+    }
+  }
+  & .ant-badge-status-dot {
+    width: 12px;
+    height: 12px;
+  }
+  &-loader {
+    height: calc(100vh - 300px);
+  }
+  & .ticket-attachment {
+    & img {
+      padding: 8px;
+      border: 1px solid var(--lite-silver);
+      border-radius: 8px;
+      width: 88px;
+      height: 88px;
+      object-fit: cover;
+    }
+  }
+}

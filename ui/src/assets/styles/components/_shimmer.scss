@@ -1,0 +1,111 @@
+.shimmer {
+  & .ant-skeleton {
+    &-input {
+      min-width: auto !important;
+    }
+    &-image {
+      width: auto !important;
+    }
+  }
+  &-table-head-bg {
+    background: var(--table-row-selected-header-bg);
+  }
+  &-img {
+    & img {
+      -webkit-mask: linear-gradient(
+          -90deg,
+          var(--white) 50%,
+          rgba(0, 0, 0, 0.1),
+          var(--white) 70%
+        )
+        right/300% 100%;
+      background-repeat: no-repeat;
+      animation: shimmer 1.4s infinite;
+      max-width: 100%;
+    }
+    &.map-shimmer {
+      & img {
+        -webkit-mask: linear-gradient(
+            -90deg,
+            var(--white) 50%,
+            rgb(0, 0, 0, 67%),
+            var(--white) 70%
+          )
+          right/300% 100%;
+      }
+    }
+    &.donut-shimmer {
+      position: relative;
+      max-width: 278px;
+      max-height: 278px;
+      text-align: center;
+      margin: 0 auto 30px;
+      & .donut-shimmer-inner {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+      }
+    }
+    &.progress-circle-shimmer {
+      position: relative;
+      max-width: 120px;
+      max-height: 120px;
+      text-align: center;
+      margin: 0 auto 30px;
+      & .progress-circle-shimmer {
+        &-box {
+          position: relative;
+          & span {
+            width: 120px;
+          }
+          &::before {
+            content: "";
+            background: var(--white);
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            max-width: 110px;
+            max-height: 110px;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+          }
+        }
+        &-inner {
+          position: absolute;
+          left: 50%;
+          top: 50%;
+          transform: translate(-50%, -50%);
+        }
+      }
+    }
+  }
+  &-timline-border {
+    position: relative;
+    &::before {
+      content: "";
+      border-left: 1px dashed #e9e9e9;
+      position: absolute;
+      left: 8px;
+      top: 16px;
+      height: calc(100% - 20px);
+      width: 1px;
+      z-index: 0;
+    }
+  }
+}
+
+@-webkit-keyframes shimmer {
+  100% {
+    -webkit-mask-position: left;
+    mask-position: left;
+  }
+}
+@keyframes shimmer {
+  100% {
+    -webkit-mask-position: left;
+    mask-position: left;
+  }
+}

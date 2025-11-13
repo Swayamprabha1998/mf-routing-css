@@ -1,0 +1,31 @@
+.custom-tooltip {
+  z-index: 1001;
+  padding-inline: 12px;
+  background-color: var(--white);
+  color: var(--black);
+  border-radius: 5px;
+  box-shadow: var(--shadow-color);
+  transition: 0.5s all;
+  & table {
+    border: 0;
+  }
+
+  & table,
+  & table tr,
+  & table tr td {
+    background-color: var(--white);
+  }
+  &-typography {
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 22px;
+  }
+
+  &-edge {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    margin-inline-end: 4px;
+    display: block;
+  }
+}

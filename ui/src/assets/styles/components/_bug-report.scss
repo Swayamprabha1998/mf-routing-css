@@ -1,0 +1,21 @@
+#bug-feedback-form {
+  --inset: auto auto 24px 12px;
+  --font-size: 12px;
+  --font-family: var(--font-family-inter);
+}
+.sidebar-collapsed {
+  #bug-feedback-form {
+    --inset: auto auto 0 80px;
+  }
+}
+.report-bug-widget.ant-menu-item-selected {
+  color: inherit !important;
+}
+
+.reporting-drawer {
+  & .table-wrapper .table-pagination-wrapper {
+    [data-theme="dark"] & {
+      background-color: var(--country-list-bg);
+    }
+  }
+}

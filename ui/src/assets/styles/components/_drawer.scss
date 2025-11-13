@@ -1,0 +1,136 @@
+@use "../base/variables" as *;
+@use "../base/mixins" as *;
+
+.ant-drawer {
+  .ant-drawer-body:has(.#{$prefix}-drawer-body) {
+    padding: 0;
+  }
+  .#{$prefix}-drawer-header {
+    border-bottom: none;
+    padding-block: 10px;
+  }
+  .#{$prefix}-drawer-body-pt-0 {
+    padding-top: 0;
+  }
+  .#{$prefix}-drawer-custom-footer {
+    padding: 10px 20px;
+    border-top: 1px solid var(--border-color);
+
+    &::before {
+      content: "";
+      background:       /* Shadow BOTTOM */ radial-gradient(
+          farthest-side at 50% 100%,
+          rgba(0, 0, 0, 0.2),
+          rgba(0, 0, 0, 0)
+        )
+        center bottom;
+      height: 10px;
+      display: block;
+      position: absolute;
+      margin-top: -10px;
+    }
+  }
+
+  .#{$prefix}-drawer-body {
+    padding: 16px;
+    box-sizing: border-box;
+    height: calc(
+      100vh - var(--drawer-header-height) - var(--drawer-footer-height) -
+        var(--drawer-border-size) - 2px
+    );
+    overflow-y: auto;
+
+    background: linear-gradient(white 30%, rgba(255, 255, 255, 0)),
+      linear-gradient(rgba(255, 255, 255, 0), white 70%) 0 100%,
+      radial-gradient(
+        farthest-side at 50% 0,
+        rgba(0, 0, 0, 0.2),
+        rgba(0, 0, 0, 0)
+      ),
+      radial-gradient(
+          farthest-side at 50% 100%,
+          rgba(0, 0, 0, 0.2),
+          rgba(0, 0, 0, 0)
+        )
+        0 100%;
+    background-repeat: no-repeat;
+    background-color: var(--white);
+    background-size: 100% 10px, 100% 10px, 100% 0px, 100% 4px;
+
+    background-attachment: local, local, scroll, scroll;
+    @include customScrollbar();
+  }
+  scrollbar-width: thin;
+  .ant-tabs .ant-tabs-tab {
+    max-height: 40px;
+    padding-block: 6px;
+  }
+}
+
+.drawer-card .ant-card-body {
+  box-sizing: border-box;
+  padding: 0;
+}
+
+.#{$prefix}-drawer-form-body {
+  box-sizing: border-box;
+  padding: 24px;
+  overflow-y: auto;
+  height: calc(
+    100vh - var(--drawer-header-height) - var(--drawer-footer-height) -
+      var(--drawer-border-size) - var(--drawer-body-padding)
+  );
+}
+.ad-group-modal {
+  & .look-drawer-body {
+    height: calc(
+      100vh - var(--drawer-header-height) - var(--drawer-footer-height) - 30px
+    );
+  }
+}
+.launch-creative-static-drawer {
+  & .look-drawer-body {
+    height: calc(
+      100vh - var(--drawer-header-height) - var(--drawer-footer-height) - 55px
+    );
+  }
+}
+.look-launch-modal {
+  & .look-drawer-body {
+    height: unset;
+    padding-bottom: 0 !important;
+    & .look-drawer-body {
+      height: calc(
+        100vh - var(--drawer-header-height) - var(--drawer-footer-height) - 30px
+      );
+    }
+  }
+}
+.launch-creative-drawer-two {
+  & .look-drawer-body {
+    height: calc(
+      100vh - var(--drawer-header-height) - var(--drawer-footer-height) - 60px
+    );
+  }
+}
+
+.reporting-drawer {
+  & .ant-drawer-body {
+    padding-block: 0;
+    overflow: hidden;
+    // TODO: this style for backup
+    // & .table-row-wrapper {
+    //   height: calc(
+    //     100vh - var(--header-height) - var(--table-pagination-height) -
+    //       var(--tab-bottom-margin) - 16px - 34px - 47px
+    //   );
+    //   // style used for [66px - header], [72px - pagination], [16px 16px - margin], [34px - setting], [47px - tabs]
+    // }
+    & .look-dashboard {
+      height: calc(100vh - var(--header-height) - 16px - 46px);
+      // style used for [16px - margin], [46px - tabs]
+      overflow: hidden auto;
+      padding-block-end: 16px;
+    }
+  }
+}

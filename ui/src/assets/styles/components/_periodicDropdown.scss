@@ -1,0 +1,19 @@
+.periodic {
+  &-dropdown-card {
+    background-color: var(--bg-color-1) !important;
+    border: 1px solid var(--border-color) !important;
+    max-width: 320px;
+    width: 320px;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+  }
+  &-date-picker-card {
+    background-color: var(--bg-color-1) !important;
+    border: 1px solid var(--border-color) !important;
+    padding: 16px;
+    width: 320px;
+
+    & .ant-card-body {
+      padding: 0;
+    }
+  }
+}

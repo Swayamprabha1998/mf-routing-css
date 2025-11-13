@@ -1,0 +1,46 @@
+.bulk-action-toolbar {
+  --sidebar-width: 280px;
+  --sidebar-width-half: 120px;
+  position: fixed;
+  top: 64px;
+  left: 30%;
+  background: red;
+  padding: 10px;
+  border-radius: 6px;
+  background: var(--white);
+  max-width: calc(100% - 50px - var(--sidebar-width));
+  left: 50%;
+  transform: translateX(calc(-50% + var(--sidebar-width-half)));
+  width: max-content;
+  z-index: var(--z-index-999);
+  transition: all 0.2s, background 0s;
+  box-shadow: var(--bulk-action-shadow);
+  padding-right: 37px;
+  [data-theme="dark"] & {
+    background: var(--bulk-action-bg);
+  }
+
+  .bulk-status-action {
+    min-width: 120px;
+  }
+  .selected {
+    display: inline-block;
+    white-space: nowrap;
+  }
+  .close {
+    position: absolute;
+    top: 10px;
+    right: 5px;
+  }
+}
+
+.ant-layout-sider {
+  &.ant-layout-sider-collapsed {
+    & + .dashboard-inner-layout {
+      .bulk-action-toolbar {
+        --sidebar-width: 80px;
+        --sidebar-width-half: 40px;
+      }
+    }
+  }
+}
