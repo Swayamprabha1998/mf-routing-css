@@ -1,6 +1,8 @@
 import { Routes, Route, Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { selectCartCount } from "../store";
+import LookInput from "ui/LookInput";
+import { Col } from "antd";
 
 const CartItems = () => {
   const cartCount = useSelector(selectCartCount);
@@ -210,7 +212,7 @@ const Checkout = () => (
     </div>
 
     <div style={{ marginTop: "20px" }}>
-      <form>
+      {/* <form>
         <div style={{ marginBottom: "15px" }}>
           <label style={{ display: "block", marginBottom: "5px" }}>
             Full Name:
@@ -225,6 +227,7 @@ const Checkout = () => (
             }}
             placeholder="Enter your full name"
           />
+          <LookInput label="Full Name" placeholder="Enter your full name" />
         </div>
         <div style={{ marginBottom: "15px" }}>
           <label style={{ display: "block", marginBottom: "5px" }}>
@@ -285,6 +288,51 @@ const Checkout = () => (
             Place Order
           </button>
         </div>
+      </form>*/}
+      <form className="w-100 mb-20">
+        <Col span={24}>
+          <LookInput label="Full Name" placeholder="Enter your full name" />
+          <LookInput label="Email" placeholder="Enter your email" />
+          <LookInput
+            label="Address"
+            placeholder="Enter your shipping address"
+          />
+        </Col>
+        {/* <Col>
+          
+        </Col>
+        <Col>
+          
+        </Col> */}
+        <Col>
+          <Link
+            to=""
+            style={{
+              display: "inline-block",
+              padding: "10px 20px",
+              background: "#6c757d",
+              color: "white",
+              textDecoration: "none",
+              borderRadius: "4px",
+              marginRight: "10px",
+            }}
+          >
+            Back to Cart
+          </Link>
+          <button
+            type="submit"
+            style={{
+              padding: "10px 20px",
+              background: "#007bff",
+              color: "white",
+              border: "none",
+              borderRadius: "4px",
+              cursor: "pointer",
+            }}
+          >
+            Place Order
+          </button>
+        </Col>
       </form>
     </div>
   </div>

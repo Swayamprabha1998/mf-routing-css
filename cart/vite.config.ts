@@ -20,8 +20,28 @@ export default defineConfig({
         "react-redux",
         "@reduxjs/toolkit",
         "react-router-dom",
+        "antd",
+        "@ant-design/icons",
+        "ag-grid-react",
+        "ag-grid-community",
+        "react-hook-form",
+        "react-phone-input-2"
       ],
+      // Configure remotes like webpack Module Federation
+      remotes: {
+        ui: "http://localhost:5003/assets/remoteEntry.js"
+      },
     }),
   ],
+  server: {
+    port: 5002,
+  },
   preview: { port: 5002 },
+  css: {
+    preprocessorOptions: {
+      scss: {
+        // SCSS processing handled by dynamic import of remote styles
+      }
+    }
+  }
 });

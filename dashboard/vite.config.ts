@@ -18,6 +18,12 @@ export default defineConfig({
         "react-redux",
         "@reduxjs/toolkit",
         "react-router-dom",
+        "antd",
+        "@ant-design/icons",
+        "ag-grid-react",
+        "ag-grid-community",
+        "react-hook-form",
+        "react-phone-input-2"
       ],
       remotes: {
         ui: "http://localhost:5003/assets/remoteEntry.js",
@@ -32,4 +38,11 @@ export default defineConfig({
   preview: {
     port: 5001,
   },
+  css: {
+    preprocessorOptions: {
+      scss: {
+        // SCSS processing handled by dynamic import of remote styles
+      }
+    }
+  }
 });

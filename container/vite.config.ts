@@ -22,6 +22,12 @@ export default defineConfig({
         "react-redux",
         "@reduxjs/toolkit",
         "react-router-dom",
+        "antd",
+        "@ant-design/icons",
+        "ag-grid-react",
+        "ag-grid-community",
+        "react-hook-form",
+        "react-phone-input-2"
       ],
     }),
   ],
@@ -31,4 +37,11 @@ export default defineConfig({
   preview: {
     port: 5000,
   },
+  css: {
+    preprocessorOptions: {
+      scss: {
+        // SCSS processing handled by dynamic import of remote styles  
+      }
+    }
+  }
 });

@@ -9,9 +9,34 @@ export default defineConfig({
     federation({
       name: "ui",
       filename: "remoteEntry.js",
-      exposes: { "./Button": "./src/Button.tsx" },
-      shared: ["react", "react-dom"],
+      exposes: {
+        "./Button": "./src/Button.tsx",
+        "./LookInput": "./src/components/LookInput.tsx",
+        "./LookSelect": "./src/components/LookSelect.tsx",
+        // Expose styles through JavaScript wrapper (Vite compatible)
+        "./styles": "./src/styles.js",
+      },
+      shared: [
+        "react",
+        "react-dom",
+        "antd",
+        "@ant-design/icons",
+        "ag-grid-react",
+        "ag-grid-community",
+        "react-hook-form",
+        "react-phone-input-2",
+      ],
     }),
   ],
+  server: {
+    port: 5003,
+  },
   preview: { port: 5003 },
+  css: {
+    preprocessorOptions: {
+      scss: {
+        // Let main.scss handle its own imports
+      },
+    },
+  },
 });
